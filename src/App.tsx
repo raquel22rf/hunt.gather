@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Map, { Marker } from "react-map-gl";
+import { useGeolocated } from "react-geolocated";
 
-function App() {
+const App = () => {
+  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+    useGeolocated({
+      positionOptions: {
+        enableHighAccuracy: false,
+      },
+      userDecisionTimeout: 5000,
+    });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="artboard phone-1">
+      <h1>hunt.gather</h1>
+      <button className="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900">
+        Button
+      </button>
+      <div id="map"></div>
+      {coords && (
+        <Map
+          mapboxAccessToken={process.env.REACT_APP_ACCESS_TOKEN}
+          initialViewState={{
+            longitude: coords?.longitude,
+            latitude: coords?.latitude,
+            zoom: 14,
+          }}
+          style={{ width: 600, height: 400 }}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
         >
-          Learn React
-        </a>
-      </header>
+          <Marker
+            longitude={coords.longitude}
+            latitude={coords.latitude}
+            anchor="bottom"
+          >
+            <img src="./marker.png" alt="Pin Marker" />
+          </Marker>
+        </Map>
+      )}
     </div>
   );
-}
+};
 
 export default App;
