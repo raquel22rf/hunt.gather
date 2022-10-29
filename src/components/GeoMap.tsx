@@ -6,7 +6,7 @@ import { Coordinates, GeoMapProps } from "../utils/types";
 import FoodSourceForm from "./FoodSourceForm";
 import Modal from "./Modal";
 
-const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
+const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected, setLatitude, setLongitude }) => {
   const [currentCoordinates, setCurrentCoordinates] =
     useState<GeolocationCoordinates>();
   const [newMarkerCoordinates, setNewMarkerCoordinates] =

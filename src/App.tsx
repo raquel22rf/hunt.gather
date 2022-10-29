@@ -6,6 +6,16 @@ import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
+  const [imageUrl, setImageUrl] = useState<String>("");
+  const [name, setName] = useState<String>("");
+  const [description, setDescription] = useState<String>("");
+  const [validMonths, setValidMonths] = useState<number[]>([]);
+  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
+
+  function createFoodSource() {
+    setIsWalletConnected(true);
+  }
 
   return (
     <div className="px-2">
@@ -18,7 +28,7 @@ const App = () => {
           <ChangeTheme />
         </div>
         <div className="flex flex-col justify-around">
-          <GeoMap isWalletConnected={isWalletConnected} />
+          <GeoMap isWalletConnected={isWalletConnected} setLatitude={setLatitude} setLongitude={setLongitude} />
           {!isWalletConnected ? (
             <button
               className="btn btn-outline btn-secondary my-3"
