@@ -25,17 +25,18 @@ const App = () => {
           initialViewState={{
             longitude: coords?.longitude,
             latitude: coords?.latitude,
-            zoom: 14,
+            zoom: 16,
           }}
           style={{ width: 600, height: 400 }}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapStyle="mapbox://styles/mapbox/dark-v9"
         >
           <Marker
             longitude={coords.longitude}
             latitude={coords.latitude}
             anchor="bottom"
           >
-            <img src="./marker.png" alt="Pin Marker" />
+            {" "}
+            <img src="./pin-marker.png" alt="Pin Marker" className="marker" />
           </Marker>
         </Map>
       )}
