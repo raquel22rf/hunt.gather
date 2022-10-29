@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.7",
     "@types/google.maps": "^3.50.4",
     "@types/googlemaps": "^3.43.3",
     "@types/node": "^18.11.7",
