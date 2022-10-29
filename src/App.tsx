@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import GeoMap from "./components/GeoMap";
+import UploadImage from "./components/UploadImage";
 import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Web3Wallet />
         )}
       </article>
+      <UploadImage />
     </div>
   );
 };
