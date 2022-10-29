@@ -35,6 +35,10 @@
   width: 70vw;
 }
 
+.logo {
+  width: 2.3rem;
+}
+
 /* spinner */
 @keyframes spinner {
   0% {
