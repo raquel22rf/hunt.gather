@@ -1,6 +1,5 @@
-import React from "react";
-import { Web3Modal } from "@web3modal/react";
 import type { ConfigOptions } from "@web3modal/core";
+import { Web3Modal } from "@web3modal/react";
 
 const config: ConfigOptions = {
   projectId: "9fa9db4de9d0fab82e5405f9a891d192",
@@ -10,6 +9,7 @@ const config: ConfigOptions = {
     appName: "web3Modal",
   },
 };
+
 const WalletConnect = () => {
   return (
     <>

@@ -3,3 +3,8 @@ export interface GeoMapProps {
   setLatitude: (latitude: number) => void;
   setLongitude: (longitude: number) => void;
 }
+
+export interface Coordinates {
+  lat: number;
+  lng: number;
+}
