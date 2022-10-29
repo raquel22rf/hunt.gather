@@ -6,6 +6,7 @@ import "./foodSource.sol";
 contract FoodSourceFactory {
 
     FoodSource private foodSourceContract;
+    uint256 public lastFSCounter;
 
     constructor(address _foodSourceContract) {
         foodSourceContract = FoodSource(_foodSourceContract);
@@ -13,7 +14,17 @@ contract FoodSourceFactory {
 
     function createFoodSource(string[] memory _uris, uint[] memory _validMonths)
         external
+        returns(uint256 foodId)
     {
-        uint256 foodId = foodSourceContract.mint(address(this), _uris, _validMonths);
+        foodId = foodSourceContract.mint(address(this), _uris, _validMonths);
+        lastFSCounter = foodId;
+    }
+
+    function getLastFSCounter()
+        view
+        external
+        returns(uint256)
+    {
+        return lastFSCounter;
     }
 }
