@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Map, { Marker, GeolocateControl } from "react-map-gl";
 
 const DUMMY_DATA = [
@@ -14,18 +14,27 @@ const DUMMY_DATA = [
   },
 ];
 
-const GeoMap = () => {
+interface GeoMapProps {
+  isWalletConnected: boolean;
+}
+
+const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
+  useEffect(() => {
+    console.log("lat", Map);
+  });
   return (
     <div className="md:container md:mx-auto">
       <Map
         mapboxAccessToken={process.env.REACT_APP_ACCESS_TOKEN}
-        style={{ height: 400 }}
+        style={{ height: "70vh" }}
         mapStyle="mapbox://styles/mapbox/dark-v9"
       >
-        <Marker longitude={-9} latitude={38} anchor="bottom">
-          {" "}
-          <img src="./mapbox-icon.png" alt="Pin Marker" className="marker" />
-        </Marker>
+        {isWalletConnected && (
+          <Marker longitude={-9} latitude={38} anchor="bottom">
+            {" "}
+            <img src="./mapbox-icon.png" alt="Pin Marker" className="marker" />
+          </Marker>
+        )}
         ;
         {DUMMY_DATA.map((element, index) => {
           return (
@@ -46,7 +55,7 @@ const GeoMap = () => {
         })}
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
-          fitBoundsOptions={{ maxZoom: 10 }}
+          fitBoundsOptions={{ maxZoom: 16 }}
           trackUserLocation={true}
           showAccuracyCircle={true}
           showUserLocation={true}

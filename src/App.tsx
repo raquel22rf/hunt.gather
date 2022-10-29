@@ -4,17 +4,17 @@ import GeoMap from "./components/GeoMap";
 import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
-  const [connectWallet, setConnectWallet] = useState<boolean>(false);
+  const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
 
   return (
     <div className="px-2">
       <article className="prose flex flex-col justify-center ">
         <h1 className="pt-6">hunt.gather</h1>
-        <GeoMap />
-        {!connectWallet ? (
+        <GeoMap isWalletConnected={isWalletConnected} />
+        {!isWalletConnected ? (
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-4  py-2 px-4 rounded-full"
-            onClick={() => setConnectWallet(true)}
+            onClick={() => setIsWalletConnected(true)}
           >
             Add food source
           </button>
