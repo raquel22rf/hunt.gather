@@ -12,7 +12,7 @@ contract FoodSource is ERC721, ERC721URIStorage, Ownable{
 
     Counters.Counter private _tokenIdCounter;
 
-    mapping(uint => string[]) public idToUri;
+    mapping(uint => string[]) public idToUris;
     mapping(uint => uint[]) public idToMonths;
 
     constructor() ERC721("FoodSource", "FS") {
@@ -20,13 +20,13 @@ contract FoodSource is ERC721, ERC721URIStorage, Ownable{
     }
 
     function mint(address _to, string[] memory _uris, uint[] memory _validMonths) 
-        public 
+        external 
         returns (uint256) 
     {
         uint256 tokenId = _tokenIdCounter.current();
         _mint(_to, tokenId);
-        idToUri[tokenId][0] = _uris[0];
-        idToUri[tokenId][1] = _uris[1];
+        idToUris[tokenId][0] = _uris[0];
+        idToUris[tokenId][1] = _uris[1];
         idToMonths[tokenId] = _validMonths;
         _tokenIdCounter.increment();
         return tokenId;
@@ -47,16 +47,17 @@ contract FoodSource is ERC721, ERC721URIStorage, Ownable{
     {
         uint currentMonth = getCurrentMonth();
         uint[] memory validMonths = idToMonths[tokenId];
+
         uint arr_length = validMonths.length;
 
         for (uint idx = 0; idx < arr_length; ){
             if(validMonths[idx] == currentMonth){
-                result = idToUri[tokenId][0];
+                result = idToUris[tokenId][0];
             }
             unchecked { ++idx;}
         }
         if(bytes(result).length == 0){
-            result = idToUri[tokenId][1];
+            result = idToUris[tokenId][1];
         }
     }
 
@@ -66,7 +67,6 @@ contract FoodSource is ERC721, ERC721URIStorage, Ownable{
         returns (uint256 month) 
     {
         int256 __days = int256(block.timestamp / (24 * 60 * 60));
-
         int256 L = __days + 68569 + 2440588;
         int256 N = (4 * L) / 146097;
         L = L - (146097 * N + 3) / 4;
@@ -75,7 +75,6 @@ contract FoodSource is ERC721, ERC721URIStorage, Ownable{
         int256 _month = (80 * L) / 2447;
         L = _month / 11;
         _month = _month + 2 - 12 * L;
-
         month = uint256(_month);
     }
 }
