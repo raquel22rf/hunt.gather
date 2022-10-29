@@ -13,3 +13,44 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+/* multiselect */
+
+.option.highlightOption.option {
+  background-color: rgb(150, 55, 145);
+}
+
+.chip.false,
+.chip.false::after {
+  background-color: rgb(150, 55, 145);
+}
+
+.searchWrapper {
+  border-radius: 10px;
+  border: 1px solid rgb(150, 55, 145) !;
+}
+
+/* color themes */
+
+:root {
+  --color-default: #252b30;
+}
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --color-default: #252b30;
+  }
+} */
+[data-theme="dark"] {
+  --color-default: #252b30;
+}
+@media (prefers-color-scheme: light) {
+  /* :root {
+    --color-default: #b7bec4;
+  } */
+}
+[data-theme="light"] {
+  --color-default: #e0e3e4;
+}
+body {
+  background-color: var(--color-default);
+}

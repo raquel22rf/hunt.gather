@@ -16,6 +16,8 @@
     "@web3modal/ethereum": "^2.0.0-beta.1",
     "@web3modal/react": "^2.0.0-beta.1",
     "buffer": "^6.0.3",
+    "buffer": "^6.0.3",
+    "daisyui": "^2.36.1",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "fs": "^0.0.1-security",
@@ -31,6 +33,7 @@
     "react-dom": "^18.2.0",
     "react-map-gl": "^7.0.19",
     "react-scripts": "5.0.1",
+    "theme-change": "^2.2.0",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },

@@ -70,19 +70,20 @@ const UploadImage = () => {
         </header>
       ) : (
         <article className="prose flex flex-col justify-center ">
-          <h4>Upload Image</h4>
+          <label className="label">
+            <span className="label-text text-md">Upload image</span>
+          </label>
           <form onSubmit={onSubmitHandler}>
             <label className="block">
               <span className="sr-only">Choose File</span>
               <input
                 type="file"
-                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                className="file-input file-input-bordered w-full max-w-xs text-sm"
               />
             </label>
-
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-2 py-2 px-4 rounded-full"
+              className="btn btn-outline btn-secondary my-3"
             >
               Upload File
             </button>
