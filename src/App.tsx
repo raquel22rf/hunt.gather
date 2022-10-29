@@ -27,7 +27,7 @@ const App = () => {
           <ChangeTheme />
         </div>
         <div className="flex flex-col justify-around">
-          <GeoMap isWalletConnected={isWalletConnected} />
+          <GeoMap isWalletConnected={isWalletConnected} setLatitude={setLatitude} setLongitude={setLongitude} />
           {!isWalletConnected ? (
             <button
               className="btn btn-outline btn-secondary my-3"
