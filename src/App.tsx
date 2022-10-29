@@ -5,6 +5,12 @@ import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
+  const [isCreatingFS, setIsCreatingFS] = useState<boolean>(false);
+
+  function createFoodSource(){
+    setIsWalletConnected(true)
+
+  }
 
   return (
     <div className="px-2">
@@ -14,7 +20,7 @@ const App = () => {
         {!isWalletConnected ? (
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-4  py-2 px-4 rounded-full"
-            onClick={() => setIsWalletConnected(true)}
+            onClick={() => createFoodSource()}
           >
             Add food source
           </button>
