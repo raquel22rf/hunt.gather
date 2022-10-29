@@ -8,11 +8,6 @@ import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
-  const [isCreatingFS, setIsCreatingFS] = useState<boolean>(false);
-
-  function createFoodSource() {
-    setIsWalletConnected(true);
-  }
 
   return (
     <div className="px-2">
@@ -21,19 +16,20 @@ const App = () => {
           <h1>harvest.today</h1>
           <ChangeTheme />
         </div>
-        <GeoMap isWalletConnected={isWalletConnected} />
-        {!isWalletConnected ? (
-          <button
-            className="btn btn-outline btn-secondary my-3"
-            onClick={() => createFoodSource()}
-          >
-            Add food source
-          </button>
-        ) : (
-          <Web3Wallet />
-        )}
+        <div className="flex flex-col justify-around">
+          <GeoMap isWalletConnected={isWalletConnected} />
+          {!isWalletConnected ? (
+            <button
+              className="btn btn-outline btn-secondary my-3"
+              onClick={() => setIsWalletConnected(true)}
+            >
+              Add food source
+            </button>
+          ) : (
+            <Web3Wallet />
+          )}
+        </div>
       </article>
-      <FoodSourceForm />
     </div>
   );
 };

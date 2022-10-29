@@ -1,5 +1,4 @@
 import Multiselect from "multiselect-react-dropdown";
-import React from "react";
 import UploadImage from "./UploadImage";
 import { MONTHS_OF_YEAR } from "../utils/constants";
 
