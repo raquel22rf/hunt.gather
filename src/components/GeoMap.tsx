@@ -4,7 +4,7 @@ import Multiselect from "multiselect-react-dropdown";
 import { MONTHS_OF_YEAR, DUMMY_DATA } from "../utils/constants";
 import { GeoMapProps } from "../utils/types";
 
-const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
+const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected, setLatitude, setLongitude }) => {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
