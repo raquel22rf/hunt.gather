@@ -16,7 +16,6 @@
     "@web3modal/ethereum": "^2.0.0-beta.1",
     "@web3modal/react": "^2.0.0-beta.1",
     "buffer": "^6.0.3",
-    "buffer": "^6.0.3",
     "daisyui": "^2.36.1",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
