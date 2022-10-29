@@ -135,6 +135,12 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
               placeholder="Select months where food is available"
               />
           </form>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold my-4  py-2 px-4 rounded-full"
+            onClick={() => console.log('clickkk')}
+          >
+            Add
+          </button>
     </Popup> 
     )}
       </Map>)}
