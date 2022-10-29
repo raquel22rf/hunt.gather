@@ -19,9 +19,6 @@ interface GeoMapProps {
 }
 
 const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
-  useEffect(() => {
-    console.log("lat", Map);
-  });
   return (
     <div className="md:container md:mx-auto">
       <Map
