@@ -11,7 +11,7 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
     useState<GeolocationCoordinates>();
   const [newMarkerCoordinates, setNewMarkerCoordinates] =
     useState<Coordinates>();
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const getCoordinates = (e: any) => {
     if (isWalletConnected) {
@@ -83,7 +83,7 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
                   newMarkerCoordinates.lat
                 )
               }
-              onClick={() => console.log("click")}
+              onClick={() => setIsOpen(true)}
             >
               {" "}
               <img
@@ -93,7 +93,7 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
               />
             </Marker>
           )}
-          {modalIsOpen && <Modal />}
+          <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
         </Map>
       ) : (
         <div className="flex">

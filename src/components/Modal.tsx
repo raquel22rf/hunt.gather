@@ -1,20 +1,29 @@
-import React from "react";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import { ModalProps } from "../utils/types";
+import FoodSourceForm from "./FoodSourceForm";
 
-const Modal = () => {
+const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen }) => {
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
-      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
-      <label htmlFor="my-modal-4" className="modal cursor-pointer">
-        <label className="modal-box relative" htmlFor="">
-          <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-        </label>
-      </label>
+      <Dialog open={isOpen} onClose={handleClose}>
+        <DialogTitle>Subscribe</DialogTitle>
+        <DialogContent>
+          <FoodSourceForm />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Add</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
