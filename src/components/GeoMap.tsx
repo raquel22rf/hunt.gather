@@ -1,11 +1,13 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
-import FoodSourceFactory from "../../artifacts/contracts/foodsourceFactory.sol/FoodSourceFactory.json";
+import FoodSourceFactory from "../FoodSourceFactory.json";
 import { DUMMY_DATA } from "../utils/constants";
 import { Coordinates, GeoMapProps } from "../utils/types";
 import Modal from "./Modal";
 import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
+import { Buffer } from "buffer";
+import { Grid } from "@mui/material";
 
 const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
   const [currentCoordinates, setCurrentCoordinates] =
@@ -105,7 +107,7 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
 
   return (
     <div className="md:container md:mx-auto">
-      {currentCoordinates ? (
+      {currentCoordinates && (
         <Map
           mapboxAccessToken={process.env.REACT_APP_ACCESS_TOKEN}
           style={{ height: "70vh" }}
@@ -177,27 +179,9 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
             setValidMonths={setValidMonths}
           />
         </Map>
-      ) : (
-        <div className="flex justify-self-center">
-          <div className="spin "></div>
-        </div>
       )}
     </div>
   );
 };
 
 export default GeoMap;
-
-// <Popup
-//   longitude={newMarkerLong}
-//   latitude={newMarkerLat}
-//   closeButton={true}
-//   closeOnClick={false}
-//   onClose={() => {
-//     setNewMarkerLat(undefined);
-//     setNewMarkerLong(undefined);
-//   }}
-//   className="geomap-popup"
-// >
-//   <FoodSourceForm setImageUrl={setImageUrl} setName={setName} setDescription={setDescription} setValidMonths={setValidMonths}/>
-// </Popup>

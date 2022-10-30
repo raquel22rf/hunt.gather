@@ -89,17 +89,6 @@ const UploadImage: React.FC<UploadImagesProps> = () => {
               Upload File
             </button>
           </form>
-
-          <div>
-            {images.map((image, index) => (
-              <img
-                alt={`Uploaded #${index + 1}`}
-                src={"https://hunt-gather.infura-ipfs.io/ipfs/" + image.path}
-                style={{ maxWidth: "400px", margin: "15px" }}
-                key={image.cid.toString() + index}
-              />
-            ))}
-          </div>
         </article>
       )}
     </div>

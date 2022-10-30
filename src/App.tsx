@@ -6,11 +6,6 @@ import Web3Wallet from "./components/Web3Wallet";
 
 const App = () => {
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
-
-  function createFoodSource() {
-    setIsWalletConnected(true);
-  }
-
   return (
     <div className="px-2 content-center h-screen w-screen">
       <article className="prose flex flex-col justify-center ">
