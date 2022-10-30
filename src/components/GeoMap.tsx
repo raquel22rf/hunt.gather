@@ -1,13 +1,13 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
+//import FoodSourceFactory from "../../artifacts/contracts/foodSourceFactory.sol/FoodSourceFactory.json";
 import FoodSourceFactory from "../FoodSourceFactory.json";
 import { DUMMY_DATA } from "../utils/constants";
 import { Coordinates, GeoMapProps } from "../utils/types";
 import Modal from "./Modal";
 import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
 import { Buffer } from "buffer";
-import { Grid } from "@mui/material";
 
 const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
   const [currentCoordinates, setCurrentCoordinates] =

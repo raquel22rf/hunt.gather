@@ -58,18 +58,18 @@ const FoodSourceForm: React.FC<FoodSourceFormProps> = ({
         </div>
       </form>
       <UploadImage setImageUrl={setImageUrl} />
-      <button
-        className="btn btn-outline btn-secondary my-3"
-        onClick={(e) => handleSubmit(e)}
-      >
-        upload
-      </button>
       <div>
         <label className="label">
           <span className="label-text">When is it available?</span>
         </label>
         <Multiselect options={MONTHS_OF_YEAR} displayValue="name" />
       </div>
+      <button
+        className="btn btn-outline btn-secondary my-3"
+        onClick={(e) => handleSubmit(e)}
+      >
+        upload
+      </button>
     </article>
   );
 };

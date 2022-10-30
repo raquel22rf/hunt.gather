@@ -86,7 +86,7 @@ const UploadImage: React.FC<UploadImagesProps> = () => {
               type="submit"
               className="btn btn-outline btn-secondary my-3"
             >
-              Upload File
+              Upload image
             </button>
           </form>
         </article>

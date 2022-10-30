@@ -12,7 +12,7 @@ const App = () => {
         <div className="flex justify-between">
           <div className="flex items-center mt-3 mb-0">
             <img src="/logo.png" className="logo mx-1 " />
-            <h1 className="m-0">harvest.today</h1>
+            <h1 className="m-0 mx-2">harvest.today</h1>
           </div>
           <ChangeTheme />
         </div>
