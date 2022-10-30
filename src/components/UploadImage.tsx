@@ -42,7 +42,7 @@ const UploadImage: React.FC<UploadImagesProps> = () => {
 
   const [images, setImages] = useState<{ cid: CID; path: string }[]>([]);
 
-  const projectId = "2GoLceGgGWOzXdWgQdVamXSe61t";
+  const projectId = process.env.REACT_APP_INFURA_ID;
   const projectSecret = process.env.REACT_APP_INFURA_SECRET;
 
   const auth =
