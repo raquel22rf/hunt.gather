@@ -10,7 +10,6 @@ const Web3Wallet = () => {
         </h5>
       )}
       <div className="flex flex-col justify-center py-2">
-        <p>Click somewhere in the map to select the location</p>
         <Web3Button label={"Connect your wallet"} />
       </div>
     </div>

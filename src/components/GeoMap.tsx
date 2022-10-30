@@ -6,7 +6,11 @@ import { Coordinates, GeoMapProps } from "../utils/types";
 import FoodSourceForm from "./FoodSourceForm";
 import Modal from "./Modal";
 
-const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected, setLatitude, setLongitude }) => {
+const GeoMap: React.FC<GeoMapProps> = ({
+  isWalletConnected,
+  setLatitude,
+  setLongitude,
+}) => {
   const [currentCoordinates, setCurrentCoordinates] =
     useState<GeolocationCoordinates>();
   const [newMarkerCoordinates, setNewMarkerCoordinates] =
@@ -96,8 +100,8 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected, setLatitude, setLong
           <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
         </Map>
       ) : (
-        <div className="flex">
-          <div className="spin w-1/2"></div>
+        <div className="flex justify-self-center">
+          <div className="spin "></div>
         </div>
       )}
     </div>

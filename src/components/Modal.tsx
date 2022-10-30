@@ -15,14 +15,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen }) => {
   return (
     <div>
       <Dialog open={isOpen} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>add new food source</DialogTitle>
         <DialogContent>
-          <FoodSourceForm />
+          <FoodSourceForm handleClose={handleClose} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Add</Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
