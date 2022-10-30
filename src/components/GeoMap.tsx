@@ -60,13 +60,18 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
     console.log(weddingRing);
   };*/
 
+  const theme = document.getElementsByTagName("html")[0];
+  console.log(theme.dataset.theme);
+  const setMapTheme = () =>
+    theme.dataset.theme === "dark" ? "dark" : "streets";
+
   return (
     <div className="md:container md:mx-auto">
       {currentCoordinates ? (
         <Map
           mapboxAccessToken={process.env.REACT_APP_ACCESS_TOKEN}
           style={{ height: "70vh" }}
-          mapStyle="mapbox://styles/mapbox/dark-v9"
+          mapStyle={`mapbox://styles/mapbox/${setMapTheme()}-v9`}
           onDblClick={(e) => getCoordinates(e)}
           initialViewState={{
             longitude: currentCoordinates?.longitude,
