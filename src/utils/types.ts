@@ -1,7 +1,16 @@
 export interface GeoMapProps {
   isWalletConnected: boolean;
-  setLatitude: (latitude: number) => void;
-  setLongitude: (longitude: number) => void;
+}
+
+export interface FoodSourceFormProps {
+  setImageUrl: (imageUrl: string) => void;
+  setName: (name: string) => void;
+  setDescription: (description: string) => void;
+  setValidMonths: (validMonths: number[]) => void;
+}
+
+export interface UploadImagesProps {
+  setImageUrl: (imageUrl: string) => void;
 }
 
 export interface Coordinates {

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { create, CID, IPFSHTTPClient } from "ipfs-http-client";
 import { Buffer } from "buffer";
+import { UploadImagesProps } from "../utils/types";
 
-const UploadImage = () => {
+const UploadImage: React.FC<UploadImagesProps> = () => {
   /**
    * @description event handler that uploads the file selected by the user
    */

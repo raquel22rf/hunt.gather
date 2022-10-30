@@ -1,8 +1,9 @@
 import Multiselect from "multiselect-react-dropdown";
 import UploadImage from "./UploadImage";
 import { MONTHS_OF_YEAR } from "../utils/constants";
+import { FoodSourceFormProps } from "../utils/types";
 
-const FoodSourceForm = () => {
+const FoodSourceForm: React.FC<FoodSourceFormProps> = ({setImageUrl, setName, setDescription, setValidMonths}) => {
   const handleSubmit = () => {
     console.log("click!");
   };
@@ -37,7 +38,7 @@ const FoodSourceForm = () => {
           />
         </div>
       </form>
-      <UploadImage />
+      <UploadImage setImageUrl={setImageUrl}/>
       <button
         className="btn btn-outline btn-secondary my-3"
         onClick={() => handleSubmit()}
