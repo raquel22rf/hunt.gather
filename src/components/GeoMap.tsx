@@ -6,6 +6,7 @@ import { Coordinates, GeoMapProps } from "../utils/types";
 import FoodSourceForm from "./FoodSourceForm";
 import Modal from "./Modal";
 import { ethers } from "ethers";
+import FoodSourceFactory from '../../artifacts/contracts/foodsourceFactory.sol/FoodSourceFactory.json';
 
 const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
   const [currentCoordinates, setCurrentCoordinates] =
@@ -20,6 +21,9 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
   const [validMonths, setValidMonths] = useState<number[]>([]);
   const [latitude, setLatitude] = useState<number>(0);
   const [longitude, setLongitude] = useState<number>(0);
+  const [account, setAccount] = useState<any>("");
+
+  const contractAddress = "0xbC111a8018aE6648948A85eBBacCC10Ace5C2901";
 
   const getCoordinates = (e: any) => {
     if (isWalletConnected) {
@@ -34,9 +38,12 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
         setCurrentCoordinates(position.coords);
       });
     }
+    
   }, []);
 
- /** const mintingNFT = async () => {
+  
+
+  const mintingNFT = async () => {
     let metadata: string = JSON.stringify({
       name,
       description,
@@ -45,20 +52,31 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
       longitude
     })
 
-    const added = await client.add(metadata);
+    const added = await client.add(metadata); // ipfs
     const uri = `https://ipfs.infura.io/ipfs/${added.path}`; // after metadata is uploaded to IPFS, return the URL to use it in the transaction 
-       
-    const account = await window.ethereum.request({ method: "eth_accounts" });
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const weddingManager = new ethers.Contract(
-      contractAddress,
-      WeddingContract.abi,
-      signer
-    );
-    const weddingRing = await weddingManager.createRing(tokenUri);
-    console.log(weddingRing);
-  };*/
+    
+    try{
+      if(window.ethereum){
+        const currentAccount = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        setAccount(currentAccount);
+        
+        const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+        console.log(provider)
+        const signer = provider.getSigner();
+        const foodsourceManager = new ethers.Contract(
+          contractAddress,
+          FoodSourceFactory.abi,
+          signer
+        );
+        const foodSource = await foodsourceManager.createFoodSource([uri,uri], validMonths);
+        console.log(foodSource);
+      }
+    } catch{
+
+    }
+  };
 
   return (
     <div className="md:container md:mx-auto">
