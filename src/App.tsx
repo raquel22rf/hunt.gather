@@ -12,7 +12,7 @@ const App = () => {
   }
 
   return (
-    <div className="px-2">
+    <div className="px-2 content-center h-screen w-screen">
       <article className="prose flex flex-col justify-center ">
         <div className="flex justify-between">
           <div className="flex items-center mt-3 mb-0">

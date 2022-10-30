@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import { ethers } from "ethers";
 import FoodSourceFactory from '../../artifacts/contracts/foodsourceFactory.sol/FoodSourceFactory.json';
 
-const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
+const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
   const [currentCoordinates, setCurrentCoordinates] =
     useState<GeolocationCoordinates>();
   const [newMarkerCoordinates, setNewMarkerCoordinates] =
@@ -143,11 +143,18 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
               />
             </Marker>
           )}
-          <Modal isOpen={isOpen} setIsOpen={setIsOpen} setImageUrl={setImageUrl} setName={setName} setDescription={setDescription} setValidMonths={setValidMonths}/>
+          <Modal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setImageUrl={setImageUrl}
+            setName={setName}
+            setDescription={setDescription}
+            setValidMonths={setValidMonths}
+          />
         </Map>
       ) : (
-        <div className="flex">
-          <div className="spin w-1/2"></div>
+        <div className="flex justify-self-center">
+          <div className="spin "></div>
         </div>
       )}
     </div>

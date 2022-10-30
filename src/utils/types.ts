@@ -7,6 +7,7 @@ export interface FoodSourceFormProps {
   setName: (name: string) => void;
   setDescription: (description: string) => void;
   setValidMonths: (validMonths: number[]) => void;
+  handleClose: () => void;
 }
 
 export interface UploadImagesProps {
