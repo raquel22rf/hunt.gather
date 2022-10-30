@@ -1,17 +1,35 @@
 import Multiselect from "multiselect-react-dropdown";
 import UploadImage from "./UploadImage";
 import { MONTHS_OF_YEAR } from "../utils/constants";
+import { FoodSourceFormProps } from "../utils/types";
+import { useEffect, useState } from "react";
 
-interface FoodSourceForm {
-  handleClose: () => void;
-}
+const FoodSourceForm: React.FC<FoodSourceFormProps> = ({
+  handleClose,
+  setImageUrl,
+  setName,
+  setDescription,
+  setValidMonths,
+}) => {
+  const [formData, setFormData] = useState<{
+    name: string;
+    description: string;
+  }>({ name: "", description: "" });
 
-const FoodSourceForm: React.FC<FoodSourceForm> = ({ handleClose }) => {
-  const handleSubmit = () => {
-    console.log("click!");
-    handleClose();
+  const handleFormDataChange = (e: any) => {
+    setFormData(e.target.value);
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("click!");
+    handleClose();
+    console.log("FORMDATA", formData);
+  };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
   return (
     <article className="prose flex flex-col justify-center ">
       <form className="flex flex-col">
@@ -22,6 +40,8 @@ const FoodSourceForm: React.FC<FoodSourceForm> = ({ handleClose }) => {
           <input
             type="text"
             placeholder="name"
+            onChange={handleFormDataChange}
+            value={formData.name}
             className="input input-bordered input-md input-secondary w-full max-w-xs"
           />
         </div>
@@ -38,14 +58,16 @@ const FoodSourceForm: React.FC<FoodSourceForm> = ({ handleClose }) => {
           <input
             type="text"
             placeholder="description"
+            onChange={handleFormDataChange}
+            value={formData.description}
             className="input input-bordered input-md input-secondary w-full max-w-xs"
           />
         </div>
       </form>
-      <UploadImage />
+      <UploadImage setImageUrl={setImageUrl} />
       <button
         className="btn btn-outline btn-secondary my-3"
-        onClick={() => handleSubmit()}
+        onClick={(e) => handleSubmit(e)}
       >
         upload
       </button>

@@ -5,17 +5,21 @@ import { MONTHS_OF_YEAR, DUMMY_DATA } from "../utils/constants";
 import { Coordinates, GeoMapProps } from "../utils/types";
 import FoodSourceForm from "./FoodSourceForm";
 import Modal from "./Modal";
+import { ethers } from "ethers";
 
-const GeoMap: React.FC<GeoMapProps> = ({
-  isWalletConnected,
-  setLatitude,
-  setLongitude,
-}) => {
+const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected }) => {
   const [currentCoordinates, setCurrentCoordinates] =
     useState<GeolocationCoordinates>();
   const [newMarkerCoordinates, setNewMarkerCoordinates] =
     useState<Coordinates>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [imageUrl, setImageUrl] = useState<String>("");
+  const [name, setName] = useState<String>("");
+  const [description, setDescription] = useState<String>("");
+  const [validMonths, setValidMonths] = useState<number[]>([]);
+  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
 
   const getCoordinates = (e: any) => {
     if (isWalletConnected) {
@@ -31,6 +35,30 @@ const GeoMap: React.FC<GeoMapProps> = ({
       });
     }
   }, []);
+
+  /** const mintingNFT = async () => {
+    let metadata: string = JSON.stringify({
+      name,
+      description,
+      imageUrl,
+      latitude,
+      longitude
+    })
+
+    const added = await client.add(metadata);
+    const uri = `https://ipfs.infura.io/ipfs/${added.path}`; // after metadata is uploaded to IPFS, return the URL to use it in the transaction 
+       
+    const account = await window.ethereum.request({ method: "eth_accounts" });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const weddingManager = new ethers.Contract(
+      contractAddress,
+      WeddingContract.abi,
+      signer
+    );
+    const weddingRing = await weddingManager.createRing(tokenUri);
+    console.log(weddingRing);
+  };*/
 
   return (
     <div className="md:container md:mx-auto">
@@ -97,7 +125,14 @@ const GeoMap: React.FC<GeoMapProps> = ({
               />
             </Marker>
           )}
-          <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+          <Modal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setImageUrl={setImageUrl}
+            setName={setName}
+            setDescription={setDescription}
+            setValidMonths={setValidMonths}
+          />
         </Map>
       ) : (
         <div className="flex justify-self-center">
@@ -121,5 +156,5 @@ export default GeoMap;
 //   }}
 //   className="geomap-popup"
 // >
-//   <FoodSourceForm />
+//   <FoodSourceForm setImageUrl={setImageUrl} setName={setName} setDescription={setDescription} setValidMonths={setValidMonths}/>
 // </Popup>
