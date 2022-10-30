@@ -125,7 +125,7 @@ const GeoMap: React.FC<GeoMapProps> = ({ isWalletConnected}) => {
               />
             </Marker>
           )}
-          <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+          <Modal isOpen={isOpen} setIsOpen={setIsOpen} setImageUrl={setImageUrl} setName={setName} setDescription={setDescription} setValidMonths={setValidMonths}/>
         </Map>
       ) : (
         <div className="flex">

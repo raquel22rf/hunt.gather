@@ -21,4 +21,8 @@ export interface Coordinates {
 export interface ModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  setImageUrl: (imageUrl: string) => void;
+  setName: (name: string) => void;
+  setDescription: (description: string) => void;
+  setValidMonths: (validMonths: number[]) => void;
 }
